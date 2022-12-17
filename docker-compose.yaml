@@ -1,0 +1,17 @@
+services:
+  ssh_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - USERNAME=$USERNAME
+        - PASSWORD=$PASSWORD
+        - ROOT_PASSWORD=$ROOT_PASSWORD
+        - PERMIT_ROOT_LOGIN=$PERMIT_ROOT_LOGIN
+        - USER_GCOS=$USER_GCOS
+    container_name: "my_ssh_server"
+    ports:
+      - "2222:22"
+    env_file:
+      - .env
+    
